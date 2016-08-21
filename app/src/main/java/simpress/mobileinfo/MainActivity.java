@@ -48,6 +48,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.TimeZone;
 
 public class MainActivity extends Activity {
 
@@ -296,15 +297,15 @@ public class MainActivity extends Activity {
             p.setComponentEnabledSetting(getComponentName(),PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
 */
 
-            Calendar c = Calendar.getInstance();
-            int hora = c.get(c.HOUR);
+            Calendar c = Calendar.getInstance(TimeZone.getTimeZone("Brazil/East"));
+            int hora = c.get(c.HOUR_OF_DAY);
             int diaSemana = c.get(c.DAY_OF_WEEK);
             int minuto = c.get(c.MINUTE);
             int segundo = c.get(c.SECOND);
 
             i++;
 
-            if (hora >= 7 && hora <= 18 && (minuto % 2 == 0) && segundo == 0)
+            if (hora >= 7 && hora <= 23 && (minuto % 2 == 0) && segundo == 0)
             //(hora >= 7 && hora <= 18 && diaSemana > 1 && diaSemana < 7 && (minuto == 0 || minuto == 30))
             {
                 try {
